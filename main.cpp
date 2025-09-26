@@ -66,8 +66,48 @@ void getConvertTo(int *convertingFrom, std::string *options,
   (*convertingTo) += startAt + 1;
 }
 
-void convert(long double *base, const int *convertingTo, long double *result) {
-  switch (convertingTo) {}
+void convert(long double *base, int *convertingTo, long double *result) {
+  switch (*convertingTo) {
+  case 1:
+    *result = *base * 1000;
+    break;
+  case 2:
+    *result = *base * 100;
+    break;
+  case 3:
+    *result = *base;
+    break;
+  case 4:
+    *result = *base / 0.3038;
+    break;
+  case 5:
+    *result = *base / 0.9144;
+    break;
+  case 6:
+    *result = *base / 1000;
+    break;
+  case 7:
+    *result = *base / 1609.34;
+    break;
+  case 8:
+    *result = *base / 0.453592;
+    break;
+  case 9:
+    *result = *base;
+    break;
+  case 10:
+    *result = (4.0 / 3.0) * PI * (*base * *base * *base);
+    break;
+  case 11:
+    *result = *base;
+    break;
+  case 12:
+    *result = PI * (*base * *base);
+    break;
+  case 13:
+    *result = 4 * PI * (*base * *base);
+    break;
+  }
 }
 
 int main() {
@@ -89,9 +129,18 @@ int main() {
   std::cout << "Enter what to convert to: " << std::endl;
   getConvertTo(&convertingFrom, options, &convertingTo);
 
+  std::cout << "Enter the number you want to convert" << std::endl;
+  std::cin >> input;
+
   standardize(&convertingFrom, &base, &input);
 
   convert(&base, &convertingTo, &result);
+
+  std::cout << base << std::endl;
+  std::cout << result << std::endl;
+
+  std::cout << "A " << options[convertingFrom - 1] << " of "
+            << options[convertingTo - 1] << std::endl;
 
   return 0;
 }
