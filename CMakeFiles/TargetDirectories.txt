@@ -1,0 +1,3 @@
+/home/nick/CppConverter/CMakeFiles/Converter.dir
+/home/nick/CppConverter/CMakeFiles/edit_cache.dir
+/home/nick/CppConverter/CMakeFiles/rebuild_cache.dir
