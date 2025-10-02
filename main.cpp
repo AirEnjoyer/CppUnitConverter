@@ -56,14 +56,7 @@ void getConvertTo(int *convertingFrom, std::string *options,
   int skip = *convertingFrom;
   int startAt = *convertingFrom <= 7 ? 0 : *convertingFrom <= 9 ? 7 : 9;
   int endAt = *convertingFrom <= 7 ? 6 : *convertingFrom <= 9 ? 9 : 13;
-  for (int i = startAt; i < endAt; ++i) {
-    if (i == skip - 1) {
-      continue;
-    }
-    std::cout << i - startAt << ". " << options[i] << std::endl;
-  }
-  std::cin >> *convertingTo;
-  (*convertingTo) += startAt + 1;
+  int indexnum = startAt;
 }
 
 void convert(long double *base, int *convertingTo, long double *result) {
@@ -121,8 +114,10 @@ int main() {
 
   std::cout << "Enter what you are converting from" << std::endl;
 
-  for (int i = 0; i < (sizeof(options) / sizeof(options[0])); ++i) {
-    std::cout << i + 1 << ". " << options[i] << std::endl;
+  int i = 0;
+  for (std::string option : options) {
+    std::cout << i + 1 << ". " << option << std::endl;
+    i++;
   }
   std::cin >> convertingFrom;
 
